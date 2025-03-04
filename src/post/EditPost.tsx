@@ -10,12 +10,12 @@ const EditPost = () => {
   const [existingData, setExistingData] = useState<Post>();
   let { id } = useParams();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchData = async () => {
       await getData();
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onSubmit = async (data: Post) => {

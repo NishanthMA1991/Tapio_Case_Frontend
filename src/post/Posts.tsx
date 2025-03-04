@@ -31,13 +31,12 @@ const Posts = () => {
   const limit = 20;
   const navigate = useNavigate();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchData = async () => {
       await fetchPosts();
     };
     fetchData();
-  }, []);
+  }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
   // Infinite Scroll - Intersection Observer
   const lastUserRef = useCallback(
