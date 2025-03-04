@@ -31,6 +31,7 @@ const Posts = () => {
   const limit = 20;
   const navigate = useNavigate();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchData = async () => {
       await fetchPosts();

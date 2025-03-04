@@ -10,6 +10,7 @@ const EditPost = () => {
   const [existingData, setExistingData] = useState<Post>();
   let { id } = useParams();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchData = async () => {
       await getData();
@@ -75,7 +76,7 @@ const EditPost = () => {
     <>
       {existingData ? (
         <PostForm
-          title={"Add Post"}
+          title={"Edit Post"}
           onSubmit={onSubmit}
           existingData={existingData}
         />
