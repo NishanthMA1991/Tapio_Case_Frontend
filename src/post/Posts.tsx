@@ -36,7 +36,7 @@ const Posts = () => {
       await fetchPosts();
     };
     fetchData();
-  }, []); 
+  }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
   // Infinite Scroll - Intersection Observer
   const lastUserRef = useCallback(

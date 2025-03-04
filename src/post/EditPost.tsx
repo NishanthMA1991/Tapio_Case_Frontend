@@ -15,6 +15,7 @@ const EditPost = () => {
       await getData();
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onSubmit = async (data: Post) => {
