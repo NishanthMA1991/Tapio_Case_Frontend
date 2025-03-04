@@ -11,12 +11,16 @@ const EditPost = () => {
   let { id } = useParams();
 
   useEffect(() => {
-    getData();
+    const fetchData = async () => {
+      await getData();
+    };
+    fetchData();
   }, []);
+
   const onSubmit = async (data: Post) => {
     try {
       dataContext.setLoading(true);
-      const newPost = await updatePost(data.id, {
+      await updatePost(data.id, {
         ...existingData,
         title: data.title,
         body: data.body,
