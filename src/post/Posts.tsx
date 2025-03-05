@@ -53,7 +53,8 @@ const Posts = () => {
       });
       if (node) observer.current.observe(node);
     },
-    [dataContext.loading, hasMore] // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dataContext.loading, hasMore] 
   );
 
   const fetchPosts = debounce(async (_start = 0, _limit = 10) => {
