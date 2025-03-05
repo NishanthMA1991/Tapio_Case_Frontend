@@ -32,25 +32,29 @@ const Posts = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchPosts(page, limit);
-  }, []);
+    const fetchData = async () => {
+      await fetchPosts();
+    };
+    fetchData();
+  }, []);  // eslint-disable-line react-hooks/exhaustive-deps
 
   // Infinite Scroll - Intersection Observer
   const lastUserRef = useCallback(
     (node: HTMLLIElement | null) => {
       if (dataContext.loading) return;
       if (observer.current) observer.current.disconnect();
-      observer.current = new IntersectionObserver((entries) => {
+      observer.current = new IntersectionObserver(async (entries) => {
         if (entries[0].isIntersecting && hasMore && fetchData) {
           setFetchData(false)
           const newPage = page + limit;
           setPage(newPage); // Load next page
-          fetchPosts(page, limit);
+          await fetchPosts(page, limit);
         }
       });
       if (node) observer.current.observe(node);
     },
-    [dataContext.loading, hasMore]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dataContext.loading, hasMore] 
   );
 
   const fetchPosts = debounce(async (_start = 0, _limit = 10) => {
